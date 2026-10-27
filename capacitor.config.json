@@ -1,0 +1,9 @@
+{
+  "appId": "app.werya.smokecoffee",
+  "appName": "سیگار و قهوه",
+  "webDir": "www",
+  "backgroundColor": "#14171A",
+  "android": {
+    "backgroundColor": "#14171A"
+  }
+}
