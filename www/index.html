@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="icon-192.png">
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#14171A;--surf:#1E2328;--surf2:#2A3138;--line:#343C44;--text:#F2F4F5;--muted:#A9B3BC;--coffee:#F0B35E;--smoke:#5B7FA6;--smoke-t:#8FB0D3;--over:#F08A80}
+:root{--bg:#14171A;--surf:#1E2328;--surf2:#2A3138;--line:#343C44;--text:#F2F4F5;--muted:#A9B3BC;--coffee:#F0B35E;--smoke:#5B7FA6;--smoke-t:#8FB0D3;--over:#F08A80;--other:#6CC3B0}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font-family:'Vazirmatn',Tahoma,system-ui,sans-serif}
 button,input{font-family:inherit}
@@ -43,6 +43,7 @@ h2{margin:0 0 6px;font-size:16px;font-weight:700}
 .plus{flex:1;color:#fff}
 .plus.c{background:var(--coffee);color:#1A1206}
 .plus.s{background:var(--smoke)}
+.plus.o{background:var(--other);color:#08221D}
 .list{margin-top:20px}
 .item{display:flex;align-items:center;gap:12px;min-height:48px;border-bottom:1px solid #262C32}
 .dot{width:10px;height:10px;border-radius:5px;flex:none}
@@ -63,11 +64,12 @@ h2{margin:0 0 6px;font-size:16px;font-weight:700}
 .col .sg{width:100%;max-width:28px}
 .col .sg.c{background:var(--coffee);border-radius:6px 6px 2px 2px}
 .col .sg.s{background:var(--smoke);margin-top:2px;border-radius:2px}
+.col .sg.o{background:var(--other);margin-top:2px;border-radius:2px}
 .col .fl{width:100%;height:2px;margin-top:2px;background:var(--line)}
 .labels{display:flex;gap:4px;margin-top:8px}
 .labels span{flex:1;min-width:0;text-align:center;font-size:12px;color:var(--muted);white-space:nowrap;overflow:visible}
 .labels span.now{color:var(--coffee);font-weight:700}
-.legend{display:flex;gap:18px;font-size:13px;color:var(--muted);margin-top:12px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--muted);margin-top:12px}
 .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-left:6px;vertical-align:-1px}
 .bk{padding:4px 16px}
 .field{margin-top:16px}
@@ -80,6 +82,19 @@ h2{margin:0 0 6px;font-size:16px;font-weight:700}
 .main-btn{width:100%;height:52px;border:none;border-radius:16px;background:var(--coffee);color:#1A1206;font-size:16px;font-weight:800;cursor:pointer;margin-top:16px}
 .ghost-btn{width:100%;height:48px;border:1px solid var(--line);border-radius:16px;background:transparent;color:var(--text);font-size:15px;cursor:pointer;margin-top:12px}
 .danger{color:var(--over)}
+.other .name{color:var(--other)}
+.oform{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.oform label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+.oform .inp{height:48px}
+.oform .inp input{height:44px;font-size:16px;font-weight:500}
+.oform .btn{flex:none;width:100%;gap:8px;font-size:16px;font-weight:800;margin-top:4px}
+.social{display:flex;align-items:center;gap:12px;min-height:64px;margin-top:12px;padding:10px 16px;background:var(--surf);border:1px solid var(--line);border-radius:16px;color:var(--text);text-decoration:none}
+.social:active{background:var(--surf2)}
+.social .ic{width:40px;height:40px;border-radius:12px;background:var(--surf2);display:flex;align-items:center;justify-content:center;flex:none}
+.social .tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.social .tx b{font-size:15px;font-weight:700;direction:ltr;text-align:right}
+.social .tx small{font-size:12px;color:var(--muted)}
+.social > svg{flex:none;color:var(--muted)}
 nav{display:flex;height:calc(76px + env(safe-area-inset-bottom));padding:0 12px env(safe-area-inset-bottom);border-top:1px solid #262C32;background:#1A1E22}
 nav button{flex:1;border:none;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:56px;color:var(--muted);font-size:12px;cursor:pointer}
 nav button[aria-current="page"]{color:var(--coffee);font-weight:700}
@@ -116,13 +131,25 @@ nav button[aria-current="page"]{color:var(--coffee);font-weight:700}
 <div class="name" style="color:var(--smoke-t)">
 <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="14" width="13" height="4" rx="1"/><rect x="15" y="14" width="5" height="4" rx="1"/><path d="M19 10.5c0-1.5 1.5-1.5 1.5-3.5M22 10.5c0-1.5 1-1.5 1-3"/></svg>
 <span style="color:var(--text)">سیگار</span></div>
-<div class="cnt"><b id="sCount">۰</b><span class="unit">نخ</span></div>
+<div class="cnt"><b id="sCount">۰</b><span class="unit">پاکت</span></div>
 <div class="cost"><span id="sCost">۰</span> تومان</div>
 <div class="btns">
-<button class="btn minus" data-act="sub-s" aria-label="کم کردن یک سیگار"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 12h12"/></svg></button>
-<button class="btn plus s" data-act="add-s" aria-label="افزودن یک سیگار"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 6v12M6 12h12"/></svg></button>
+<button class="btn minus" data-act="sub-s" aria-label="کم کردن یک پاکت سیگار"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 12h12"/></svg></button>
+<button class="btn plus s" data-act="add-s" aria-label="افزودن یک پاکت سیگار"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 6v12M6 12h12"/></svg></button>
 </div>
 </div>
+</div>
+<div class="card other">
+<div class="name">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 11H7L6 8z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>
+<span style="color:var(--text)">خرید دیگر</span></div>
+<div class="cost" style="margin-top:6px;line-height:1.8">اگر چیز دیگری خریدید، عنوان و قیمتش را بنویسید.</div>
+<div class="cost" style="margin-top:0">جمع امروز: <span id="oToday">۰</span> تومان</div>
+<form id="otherForm" class="oform" autocomplete="off">
+<div><label for="oTitle">عنوان</label><div class="inp"><input id="oTitle" type="text" maxlength="60" placeholder="مثلاً نان"></div></div>
+<div><label for="oPrice">مبلغ</label><div class="inp"><input id="oPrice" type="text" inputmode="numeric" placeholder="۰"><span class="unit">تومان</span></div></div>
+<button type="submit" class="btn plus o"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 6v12M6 12h12"/></svg>افزودن</button>
+</form>
 </div>
 <div class="list">
 <h2>آخرین ثبت‌ها</h2>
@@ -148,11 +175,12 @@ nav button[aria-current="page"]{color:var(--coffee);font-weight:700}
 <div class="card" style="padding:16px 16px 14px">
 <div class="chart" id="chart" role="img" aria-label="نمودار هزینه‌ی روزانه قهوه و سیگار"></div>
 <div class="labels" id="labels"></div>
-<div class="legend"><span><i style="background:var(--coffee)"></i>قهوه</span><span><i style="background:var(--smoke)"></i>سیگار</span></div>
+<div class="legend"><span><i style="background:var(--coffee)"></i>قهوه</span><span><i style="background:var(--smoke)"></i>سیگار</span><span><i style="background:var(--other)"></i>خرید دیگر</span></div>
 </div>
 <div class="card bk">
 <div class="item"><span class="dot" style="background:var(--coffee)"></span><span class="n">قهوه <span class="t" id="bkCt"></span></span><b id="bkCc" style="font-size:15px"></b></div>
-<div class="item" style="border-bottom:none"><span class="dot" style="background:var(--smoke)"></span><span class="n">سیگار <span class="t" id="bkSt"></span></span><b id="bkSc" style="font-size:15px"></b></div>
+<div class="item"><span class="dot" style="background:var(--smoke)"></span><span class="n">سیگار <span class="t" id="bkSt"></span></span><b id="bkSc" style="font-size:15px"></b></div>
+<div class="item" style="border-bottom:none"><span class="dot" style="background:var(--other)"></span><span class="n">خرید دیگر <span class="t" id="bkOt"></span></span><b id="bkOc" style="font-size:15px"></b></div>
 </div>
 </section>
 
@@ -162,15 +190,20 @@ nav button[aria-current="page"]{color:var(--coffee);font-weight:700}
 <div class="card" style="margin-top:16px">
 <div class="field"><label for="pCoffee">قیمت هر فنجان قهوه</label>
 <div class="inp"><input id="pCoffee" type="text" inputmode="numeric" autocomplete="off"><span class="unit">تومان</span></div></div>
-<div class="field"><label for="pCig">قیمت هر نخ سیگار</label>
+<div class="field"><label for="pCig">قیمت هر پاکت سیگار</label>
 <div class="inp"><input id="pCig" type="text" inputmode="numeric" autocomplete="off"><span class="unit">تومان</span></div>
-<div class="hint">قیمت پاکت را بر تعداد سیگارهای داخلش تقسیم کنید.</div></div>
+</div>
 <div class="field"><label for="pBudget">سقف هزینه‌ی روزانه</label>
 <div class="inp"><input id="pBudget" type="text" inputmode="numeric" autocomplete="off"><span class="unit">تومان</span></div></div>
 </div>
 <button class="main-btn" data-act="save">ذخیره‌ی تغییرات</button>
 <button class="ghost-btn" id="installBtn" data-act="install" hidden>نصب اپ روی گوشی</button>
 <button class="ghost-btn danger" data-act="reset">پاک کردن همه‌ی ثبت‌ها</button>
+<a class="social" href="https://www.instagram.com/werya.pv/" target="_blank" rel="noopener noreferrer" aria-label="باز کردن صفحه‌ی werya.pv در اینستاگرام">
+<span class="ic"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span>
+<span class="tx"><b>@werya.pv</b><small>صفحه‌ی من در اینستاگرام</small></span>
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-4"/><path d="M14 5h5v5M19 5l-8 8"/></svg>
+</a>
 <p class="hint" style="margin-top:16px;line-height:1.9">اطلاعات فقط روی همین گوشی نگهداری می‌شود و جایی ارسال نمی‌شود.</p>
 </section>
 
@@ -187,20 +220,27 @@ nav button[aria-current="page"]{color:var(--coffee);font-weight:700}
 (() => {
 'use strict';
 const KEY = 'smoke-coffee.v1';
-const DEF = { prices: { coffee: 60000, cig: 15000, budget: 300000 }, log: [] };
+const DEF = { prices: { coffee: 60000, cig: 300000, budget: 300000 }, log: [] };
 const $ = (id) => document.getElementById(id);
 
 function load() {
   try {
     const r = JSON.parse(localStorage.getItem(KEY));
-    if (r && r.prices && Array.isArray(r.log)) return { prices: { ...DEF.prices, ...r.prices }, log: r.log };
+    if (r && r.prices && Array.isArray(r.log)) {
+      const prices = { ...DEF.prices, ...r.prices };
+      // Version 1 priced a single cigarette (default 15,000); version 2 prices a pack.
+      if (!r.v && prices.cig === 15000) prices.cig = DEF.prices.cig;
+      return { v: 2, prices, log: r.log };
+    }
   } catch (e) {}
-  return { prices: { ...DEF.prices }, log: [] };
+  return { v: 2, prices: { ...DEF.prices }, log: [] };
 }
 let S = load();
 function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+save();
 
 const fa = (n) => Math.round(n).toLocaleString('fa-IR');
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const toNum = (s) => parseInt(String(s)
   .replace(/[۰-۹]/g, (c) => c.charCodeAt(0) - 1776)
   .replace(/[٠-٩]/g, (c) => c.charCodeAt(0) - 1632)
@@ -231,28 +271,34 @@ function between(a, b) {
   return out;
 }
 
+const kindInfo = (e) => (e.k === 'c' ? { n: 'قهوه', c: 'var(--coffee)' }
+  : e.k === 's' ? { n: 'پاکت سیگار', c: 'var(--smoke)' }
+  : { n: esc(e.n || 'خرید دیگر'), c: 'var(--other)' });
+
 function renderToday() {
   const t0 = sod(new Date());
   const es = between(t0.getTime(), addDays(t0, 1).getTime());
   const c = es.filter((e) => e.k === 'c');
   const s = es.filter((e) => e.k === 's');
-  const cc = sum(c.map(price)), sc = sum(s.map(price));
-  const total = cc + sc, budget = S.prices.budget;
+  const o = es.filter((e) => e.k === 'o');
+  const cc = sum(c.map(price)), sc = sum(s.map(price)), oc = sum(o.map(price));
+  const total = cc + sc + oc, budget = S.prices.budget;
   $('todayDate').textContent = fmtDate(new Date());
   $('todayTotal').textContent = fa(total);
   $('cCount').textContent = fa(c.length);
   $('sCount').textContent = fa(s.length);
   $('cCost').textContent = fa(cc);
   $('sCost').textContent = fa(sc);
+  $('oToday').textContent = fa(oc);
   const over = total > budget;
   $('bar').style.width = Math.min(100, budget ? Math.round(total / budget * 100) : 0) + '%';
   $('bar').classList.toggle('over', over);
   $('budgetTxt').textContent = 'سقف روزانه ' + fa(budget);
   $('leftTxt').textContent = over ? fa(total - budget) + ' تومان بیشتر از سقف' : fa(budget - total) + ' تومان تا سقف';
-  const rows = es.slice(-5).reverse().map((e) => `
+  const rows = es.slice(-8).reverse().map((e) => `
     <div class="item">
-      <span class="dot" style="background:${e.k === 'c' ? 'var(--coffee)' : 'var(--smoke)'}"></span>
-      <span class="n">${e.k === 'c' ? 'قهوه' : 'سیگار'}</span>
+      <span class="dot" style="background:${kindInfo(e).c}"></span>
+      <span class="n">${kindInfo(e).n}</span>
       <span class="t">${timeFmt.format(new Date(e.t))}</span>
       <span class="p">${fa(price(e))}</span>
       <button class="del" data-act="del" data-i="${e.i}" aria-label="حذف این ثبت"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
@@ -280,12 +326,12 @@ function renderSummary() {
   for (let i = 0; i < days; i++) {
     const d0 = addDays(start, i);
     const es = between(d0.getTime(), addDays(d0, 1).getTime());
-    const c = es.filter((e) => e.k === 'c'), s = es.filter((e) => e.k === 's');
-    cols.push({ d0, cn: c.length, sn: s.length, cc: sum(c.map(price)), sc: sum(s.map(price)) });
+    const c = es.filter((e) => e.k === 'c'), s = es.filter((e) => e.k === 's'), o = es.filter((e) => e.k === 'o');
+    cols.push({ d0, cn: c.length, sn: s.length, on: o.length, cc: sum(c.map(price)), sc: sum(s.map(price)), oc: sum(o.map(price)) });
   }
-  const max = Math.max(1, ...cols.map((x) => x.cc + x.sc));
+  const max = Math.max(1, ...cols.map((x) => x.cc + x.sc + x.oc));
   const H = 130;
-  $('chart').innerHTML = cols.map((x) => `<div class="col"><div class="sg c" style="height:${Math.round(x.cc / max * H)}px"></div><div class="sg s" style="height:${Math.round(x.sc / max * H)}px"></div><div class="fl"></div></div>`).join('');
+  $('chart').innerHTML = cols.map((x) => `<div class="col"><div class="sg c" style="height:${Math.round(x.cc / max * H)}px"></div><div class="sg s" style="height:${Math.round(x.sc / max * H)}px"></div><div class="sg o" style="height:${Math.round(x.oc / max * H)}px"></div><div class="fl"></div></div>`).join('');
   $('labels').innerHTML = cols.map((x, i) => {
     const isNow = x.d0.getTime() === today.getTime();
     let txt = '';
@@ -293,8 +339,8 @@ function renderSummary() {
     else if (i === 0 || (i + 1) % 5 === 0 || isNow) txt = fa(i + 1);
     return `<span class="${isNow ? 'now' : ''}">${txt}</span>`;
   }).join('');
-  const cc = sum(cols.map((x) => x.cc)), sc = sum(cols.map((x) => x.sc));
-  const total = cc + sc, avg = total / elapsed;
+  const cc = sum(cols.map((x) => x.cc)), sc = sum(cols.map((x) => x.sc)), oc = sum(cols.map((x) => x.oc));
+  const total = cc + sc + oc, avg = total / elapsed;
   $('sumRange').textContent = range === 'week' ? 'از شنبه تا امروز' : 'از اول ماه تا امروز';
   $('sumLabel').textContent = range === 'week' ? 'هزینه‌ی این هفته' : 'هزینه‌ی این ماه';
   $('sumTotal').textContent = fa(total);
@@ -302,9 +348,11 @@ function renderSummary() {
   $('estLabel').textContent = range === 'week' ? 'برآورد یک ماه' : 'برآورد کل ماه';
   $('est').textContent = fa(avg * estDays) + ' تومان';
   $('bkCt').textContent = '· ' + fa(sum(cols.map((x) => x.cn))) + ' فنجان';
-  $('bkSt').textContent = '· ' + fa(sum(cols.map((x) => x.sn))) + ' نخ';
+  $('bkSt').textContent = '· ' + fa(sum(cols.map((x) => x.sn))) + ' پاکت';
+  $('bkOt').textContent = '· ' + fa(sum(cols.map((x) => x.on))) + ' مورد';
   $('bkCc').textContent = fa(cc) + ' تومان';
   $('bkSc').textContent = fa(sc) + ' تومان';
+  $('bkOc').textContent = fa(oc) + ' تومان';
   document.querySelectorAll('[data-range]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.range === range)));
 }
 
@@ -372,7 +420,20 @@ document.addEventListener('click', (ev) => {
   }
 });
 
-['pCoffee', 'pCig', 'pBudget'].forEach((id) => {
+$('otherForm').addEventListener('submit', (ev) => {
+  ev.preventDefault();
+  const title = $('oTitle').value.trim();
+  const p = toNum($('oPrice').value);
+  if (!title) { $('oTitle').focus(); return toast('عنوان را بنویسید'); }
+  if (!(p > 0)) { $('oPrice').focus(); return toast('مبلغ را وارد کنید'); }
+  S.log.push({ t: Date.now(), k: 'o', n: title.slice(0, 60), p });
+  save();
+  $('oTitle').value = '';
+  $('oPrice').value = '';
+  renderAll(); buzz(); toast('ثبت شد');
+});
+
+['pCoffee', 'pCig', 'pBudget', 'oPrice'].forEach((id) => {
   $(id).addEventListener('blur', () => { const n = toNum($(id).value); $(id).value = n > 0 ? fa(n) : ''; });
 });
 
@@ -381,7 +442,14 @@ renderAll();
 fillSettings();
 
 if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
-  navigator.serviceWorker.register('sw.js').catch(() => {});
+  const native = !!(window.Capacitor && (typeof window.Capacitor.isNativePlatform === 'function' ? window.Capacitor.isNativePlatform() : true));
+  if (native) {
+    // Inside the Android app the files are bundled; a cached copy would only show stale screens.
+    navigator.serviceWorker.getRegistrations().then((rs) => rs.forEach((r) => r.unregister())).catch(() => {});
+    if (window.caches) caches.keys().then((ks) => ks.forEach((k) => caches.delete(k))).catch(() => {});
+  } else {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  }
 }
 })();
 </script>
