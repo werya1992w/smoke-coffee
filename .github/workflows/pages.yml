@@ -1,6 +1,8 @@
 name: Publish web app
 
 on:
+  push:
+    branches: [main, master]
   workflow_dispatch:
 
 permissions:
